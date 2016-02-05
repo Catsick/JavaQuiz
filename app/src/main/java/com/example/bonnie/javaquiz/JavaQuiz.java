@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class JavaQuiz extends AppCompatActivity {
 
@@ -15,17 +16,22 @@ public class JavaQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_quiz);
 
-        mTrueButton = (Button) findViewById(R.id.true_buttin);
+        mTrueButton = (Button) findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(JavaQuiz.this,
+                                         R.string.correct_toast,
+                                            Toast.LENGTH_SHORT).show();
             }
         });
-        mFalseButton = (Button) findViewById(R.id.true_button);
+        mFalseButton = (Button) findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(JavaQuiz.this,
+                                        R.string.incorrect_toast,
+                                            Toast.LENGTH_SHORT).show();
             }
         });
 
