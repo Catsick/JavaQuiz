@@ -10,6 +10,8 @@ public class JavaQuiz extends AppCompatActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
+    private Button mNextButton;
+    private Button mPreviousButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +23,8 @@ public class JavaQuiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(JavaQuiz.this,
-                                         R.string.correct_toast,
-                                            Toast.LENGTH_SHORT).show();
+                        R.string.correct_toast,
+                        Toast.LENGTH_SHORT).show();
             }
         });
         mFalseButton = (Button) findViewById(R.id.false_button);
@@ -30,10 +32,25 @@ public class JavaQuiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(JavaQuiz.this,
-                                        R.string.incorrect_toast,
-                                            Toast.LENGTH_SHORT).show();
+                        R.string.incorrect_toast,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        mPreviousButton = (Button) findViewById(R.id.previous_button);
+        mPreviousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
+

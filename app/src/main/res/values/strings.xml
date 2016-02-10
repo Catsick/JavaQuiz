@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">JavaQuiz</string>
-    <string name="question_text">
+    <string name="question_marshmallow">
         Flappy Bird is hidden in Android Marshmallow
     </string>
+    <string name="question_sweets">
+        Does Android always name their versions after fast food joints?</string>
+    <string name="question_order">
+        Are Androids versions always in alphabetical order?</string>
+    <string name="question_source">
+        Android is not open source</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
     <string name="action_setting">Settings</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
 </resources>
