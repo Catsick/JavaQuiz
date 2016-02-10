@@ -1,7 +1,7 @@
 package com.example.bonnie.javaquiz;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,6 +12,9 @@ public class JavaQuiz extends AppCompatActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private Button mPreviousButton;
+    //private TextView mQuestionTextView;
+
+    QuestionBank mQuestionBank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
