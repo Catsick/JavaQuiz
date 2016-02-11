@@ -5,11 +5,11 @@ package com.example.bonnie.javaquiz;
  */
 public class Question {
     private int mTextResId;
-    private boolean mAnswerTrue;
+    private boolean mAnswer;
 
-public Question(int textResId, boolean answerTrue) {
+public Question(int textResId, boolean answer) {
     mTextResId = textResId;
-    mAnswerTrue = answerTrue;
+    mAnswer = answer;
 }
 
     public int getTextResId() {
@@ -21,10 +21,10 @@ public Question(int textResId, boolean answerTrue) {
     }
 
     public boolean isAnswerTrue() {
-        return mAnswerTrue;
+        return mAnswer;
     }
 
-    public void setAnswerTrue(boolean answerTrue) {
-        mAnswerTrue = answerTrue;
+    public void setAnswerTrue(boolean answer) {
+        mAnswer = answer;
     }
 }
