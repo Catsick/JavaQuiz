@@ -1,7 +1,7 @@
 package com.example.bonnie.javaquiz;
 
 /**
- * Created by Bonnie on 2/08/2016
+ * Created by Bonnie on 2/08/2016. commit for later pull
  */
 public class Question {
     private int mTextResId;
