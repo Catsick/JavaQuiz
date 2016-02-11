@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Bonnie on 2/10/2016.
+ * Created by Bonnie on 2/08/2016.
  */
 public class QuestionBank {
     public List<Question> mQuestionList = new ArrayList<>();
@@ -18,5 +18,19 @@ public class QuestionBank {
         mQuestionList.add(new Question(R.string.question_source, false));
     }
 
+    public List<Question> getQuestionList() {
+        return mQuestionList;
+    }
 
+    public void setQuestionList(List<Question> questionList) {
+        mQuestionList = questionList;
+    }
+
+    public int getCurrentIndex() {
+        return mCurrentIndex;
+    }
+
+    public void setCurrentIndex(int currentIndex) {
+        mCurrentIndex = currentIndex;
+    }
 }

@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class JavaQuiz extends AppCompatActivity {
 
     private Button mTrueButton;
@@ -18,9 +20,10 @@ public class JavaQuiz extends AppCompatActivity {
 
     int QuestionID = 0;
     boolean answer = true;
-    Question question = new Question(QuestionID, answer);
-    QuestionBank bank = new QuestionBank();
-    
+
+    QuestionBank QBank = new QuestionBank();
+
+    List<Question> Question = QBank.getQuestionList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
