@@ -7,8 +7,8 @@ import java.util.List;
  * Created by Bonnie on 2/08/2016 commit for later pull
  */
 public class QuestionBank {
-    public List<Question> mQuestionList = new ArrayList<>();
-    public int mCurrentIndex = 0;
+    private List<Question> mQuestionList = new ArrayList<>();
+    private int mCurrentIndex = -1;
 
 
     public QuestionBank() {
@@ -32,5 +32,18 @@ public class QuestionBank {
 
     public void setCurrentIndex(int currentIndex) {
         mCurrentIndex = currentIndex;
+    }
+
+    public Question getNextQuestion(){
+        if (mCurrentIndex < mQuestionList.size()-1) {
+            mCurrentIndex++;
+        }
+        return mQuestionList.get(mCurrentIndex);
+    }
+    public Question getPreviousQuestion(){
+        if (mCurrentIndex > 0) {
+            mCurrentIndex--;
+        }
+        return mQuestionList.get(mCurrentIndex);
     }
 }

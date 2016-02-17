@@ -7,8 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 public class JavaQuiz extends AppCompatActivity {
 
     private Button mTrueButton;
@@ -18,44 +16,29 @@ public class JavaQuiz extends AppCompatActivity {
     private TextView mQuestionTextView;
     private int QuestionBank;
 
-    int QuestionID = 0;
-    boolean answer = true;
+
+
 
     QuestionBank QBank = new QuestionBank();
 
-    List<Question> Question = QBank.getQuestionList();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_quiz);
 
-
-
-
-        mTrueButton = (Button) findViewById(R.id.true_button);
-        mTrueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(JavaQuiz.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        Question currentQuestion = QBank.getNextQuestion();
+        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        mQuestionTextView.setText(currentQuestion.getTextResId());
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mFalseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(JavaQuiz.this,
-                        R.string.incorrect_toast,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        mTrueButton = (Button) findViewById(R.id.true_button);
+
         mPreviousButton = (Button) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setUpQuestion(QBank.getPreviousQuestion());
             }
         });
 
@@ -63,9 +46,54 @@ public class JavaQuiz extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setUpQuestion(QBank.getNextQuestion());
             }
         });
     }
+    private void setUpQuestion(Question currentQuestion)
+        {
+            mQuestionTextView.setText(currentQuestion.getTextResId());
+
+            if(currentQuestion.isAnswer()) {
+
+                mTrueButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(JavaQuiz.this,
+                                R.string.correct_toast,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                mFalseButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(JavaQuiz.this,
+                                R.string.incorrect_toast,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            else{
+
+                mTrueButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(JavaQuiz.this,
+                                R.string.incorrect_toast,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                mFalseButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(JavaQuiz.this,
+                                R.string.correct_toast,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
 }
 
