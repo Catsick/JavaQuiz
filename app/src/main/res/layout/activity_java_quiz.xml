@@ -10,13 +10,13 @@
     >
 
   <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       android:id="@+id/question_text_view"
       android:layout_centerHorizontal="true"
       android:layout_alignParentTop="true"
       android:textColor="#673AB7"
       android:background="#311B92"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
       android:padding="24dp"
 
 
@@ -55,25 +55,24 @@
        android:layout_centerVertical="true"
 
        >
-
-
        <Button
            android:id="@+id/previous_button"
-           android:layout_marginRight="30dp"
+           android:layout_centerHorizontal="true"
+           android:layout_marginLeft="30dp"
            android:layout_width="150dp"
-           android:layout_alignParentRight="true"
            android:layout_height="wrap_content"
-           android:text="@string/next_button"
-/>
-
+           android:text="@string/next_button"/>
        <Button
            android:id="@+id/next_button"
-           android:layout_marginLeft="30dp"
-           android:layout_alignLeft="@id/previous_button"
+           android:layout_marginRight="30dp"
            android:layout_width="150dp"
-           android:layout_alignParentLeft="true"
+           android:layout_centerHorizontal="true"
            android:layout_height="wrap_content"
-           android:text="@string/previous_button"/>
+           android:text="@string/previous_button"
+           android:layout_below="@id/previous_button"
+    />
+
+
 
 </RelativeLayout>
 </RelativeLayout>
