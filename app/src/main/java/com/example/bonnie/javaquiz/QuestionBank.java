@@ -11,12 +11,15 @@ public class QuestionBank {
     private int mCurrentIndex = -1;
 
 
+
     public QuestionBank() {
         mQuestionList.add(new Question(R.string.questionMarshmallow, true));
         mQuestionList.add(new Question(R.string.question_sweets, false));
         mQuestionList.add(new Question(R.string.question_order, true));
         mQuestionList.add(new Question(R.string.question_source, false));
     }
+
+
 
     public List<Question> getQuestionList() {
         return mQuestionList;
@@ -45,5 +48,9 @@ public class QuestionBank {
             mCurrentIndex--;
         }
         return mQuestionList.get(mCurrentIndex);
+    }
+    public Question getQuestionAtIndex(int index){
+        mCurrentIndex=index;
+        return mQuestionList.get(index);
     }
 }

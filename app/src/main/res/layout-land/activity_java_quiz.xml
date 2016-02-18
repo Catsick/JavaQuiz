@@ -7,6 +7,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#D1C4E9"
+
     >
 
   <TextView
@@ -17,11 +18,20 @@
       android:layout_alignParentTop="true"
       android:textColor="#673AB7"
       android:background="#311B92"
+      android:layout_marginTop="30dp"
+      android:layout_marginRight="30dp"
       android:padding="24dp"
 
 
     />
+    <ImageView
 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="114dp" />
    <RelativeLayout
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -35,7 +45,9 @@
        android:layout_alignParentBottom="true"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+       android:background="#40000000"
        android:text="@string/true_button"
+
        />
 
     <Button
@@ -47,8 +59,6 @@
         android:layout_height="wrap_content"
         android:text="@string/false_button"
         />
-
-
 
    </RelativeLayout>
    <RelativeLayout
