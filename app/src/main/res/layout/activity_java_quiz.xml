@@ -6,7 +6,7 @@
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#D1C4E9"
+    android:background="@drawable/phone"
     >
 
   <TextView
@@ -15,9 +15,11 @@
       android:id="@+id/question_text_view"
       android:layout_centerHorizontal="true"
       android:layout_alignParentTop="true"
-      android:textColor="#673AB7"
-      android:background="#311B92"
+      android:textColor="#80CBC4"
+      android:background="#30000000"
       android:padding="24dp"
+      android:textAlignment="center"
+      android:textSize="30dp"
 
 
     />
@@ -54,24 +56,27 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_centerVertical="true"
+       android:layout_alignParentBottom="true"
+
 
        >
-       <Button
-           android:id="@+id/previous_button"
-           android:layout_centerHorizontal="true"
-           android:layout_marginLeft="30dp"
-           android:layout_width="150dp"
-           android:layout_height="wrap_content"
-           android:text="@string/previous_button"/>
+       <Button android:id="@+id/previous_button"
+       android:layout_centerHorizontal="true"
+       android:layout_marginLeft="5dp"
+       android:layout_width="150dp"
+       android:layout_height="wrap_content"
+       android:text="@string/previous_button"
+       android:layout_alignParentLeft="true"
+       />
+
        <Button
            android:id="@+id/next_button"
-           android:layout_marginRight="30dp"
+           android:layout_marginRight="5dp"
            android:layout_width="150dp"
            android:layout_centerHorizontal="true"
            android:layout_height="wrap_content"
            android:text="@string/next_button"
-           android:layout_below="@id/previous_button"
+           android:layout_alignParentRight="true"
     />
 
 
