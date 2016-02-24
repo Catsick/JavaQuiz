@@ -1,5 +1,6 @@
 package com.example.bonnie.javaquiz;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,12 +23,12 @@ public class JavaQuiz extends AppCompatActivity {
     QuestionBank QBank = new QuestionBank();
 
 
-
-     @Override
+    @Override
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart()called");
-}
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -41,19 +42,16 @@ public class JavaQuiz extends AppCompatActivity {
     }
 
     @Override
-     protected void onStop() {
+    protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop()called");
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(TAG, "onPause()called");
     }
-
-
-
-
 
 
     @Override
@@ -64,19 +62,18 @@ public class JavaQuiz extends AppCompatActivity {
 
 
         Question currentQuestion;
-        if (savedInstanceState != null && savedInstanceState.getInt(keyIndex) > 0)
-        {
+        if (savedInstanceState != null && savedInstanceState.getInt(keyIndex) > 0) {
             currentQuestion = QBank.getQuestionAtIndex(savedInstanceState.getInt(keyIndex));
-        }
-        else
-        {
+        } else {
             currentQuestion = QBank.getNextQuestion();
         }
+
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         mQuestionTextView.setText(currentQuestion.getTextResId());
         mFalseButton = (Button) findViewById(R.id.false_button);
         mTrueButton = (Button) findViewById(R.id.true_button);
+        setUpQuestion(currentQuestion);
 
         mPreviousButton = (Button) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
@@ -90,11 +87,19 @@ public class JavaQuiz extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkIsComplete();
                 setUpQuestion(QBank.getNextQuestion());
             }
         });
 
 
+    }
+
+    public void checkIsComplete(){
+        if (QBank.checkIfComplete()){
+            Intent congratsIntent = new Intent(JavaQuiz.this, Congrats.class);
+            JavaQuiz.this.startActivity(congratsIntent);
+        }
     }
 
     @Override
@@ -103,50 +108,55 @@ public class JavaQuiz extends AppCompatActivity {
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(keyIndex, QBank.getCurrentIndex());
     }
-    private void setUpQuestion(Question currentQuestion)
-        {
-            mQuestionTextView.setText(currentQuestion.getTextResId());
 
-            if(currentQuestion.isAnswer()) {
+    private void setUpQuestion(Question currentQuestion) {
+        mQuestionTextView.setText(currentQuestion.getTextResId());
 
-                mTrueButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(JavaQuiz.this,
-                                R.string.correct_toast,
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (currentQuestion.isAnswer()) {
+            mTrueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    QBank.getQuestionAtIndex(QBank.getCurrentIndex()).wasAnsweredCorrect = true;
+                    checkIsComplete();
+                    Toast.makeText(JavaQuiz.this,
+                            R.string.correct_toast,
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
 
-                mFalseButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(JavaQuiz.this,
-                                R.string.incorrect_toast,
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-            else{
+            mFalseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    QBank.getQuestionAtIndex(QBank.getCurrentIndex()).wasAnsweredCorrect = false;
+                    checkIsComplete();
+                    Toast.makeText(JavaQuiz.this,
+                            R.string.incorrect_toast,
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            mTrueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    QBank.getQuestionAtIndex(QBank.getCurrentIndex()).wasAnsweredCorrect = false;
+                    checkIsComplete();
+                    Toast.makeText(JavaQuiz.this,
+                            R.string.incorrect_toast,
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
 
-                mTrueButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(JavaQuiz.this,
-                                R.string.incorrect_toast,
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                mFalseButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(JavaQuiz.this,
-                                R.string.correct_toast,
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+            mFalseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    QBank.getQuestionAtIndex(QBank.getCurrentIndex()).wasAnsweredCorrect = true;
+                    checkIsComplete();
+                    Toast.makeText(JavaQuiz.this,
+                            R.string.correct_toast,
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
         }
+    }
 }
 

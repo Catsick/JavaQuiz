@@ -6,10 +6,12 @@ package com.example.bonnie.javaquiz;
 public class Question {
     private int mTextResId;
     private boolean mAnswer;
+    public boolean wasAnsweredCorrect;
 
 public Question(int textResId, boolean answer) {
     mTextResId = textResId;
     mAnswer = answer;
+    boolean wasAnsweredCorrect = false;
 }
 
     public int getTextResId() {

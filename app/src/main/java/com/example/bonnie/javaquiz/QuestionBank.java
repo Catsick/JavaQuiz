@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Bonnie on 2/08/2016 commit for later pull
  */
 public class QuestionBank {
-    private List<Question> mQuestionList = new ArrayList<>();
+    public List<Question> mQuestionList = new ArrayList<>();
     private int mCurrentIndex = -1;
 
 
@@ -52,5 +52,14 @@ public class QuestionBank {
     public Question getQuestionAtIndex(int index){
         mCurrentIndex=index;
         return mQuestionList.get(index);
+    }
+
+    protected boolean checkIfComplete() {
+        for (Question item : mQuestionList){
+            if (item.wasAnsweredCorrect == false){
+                return false;
+            }
+        }
+        return true;
     }
 }
