@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class QuestionBank {
     public List<Question> mQuestionList = new ArrayList<>();
-    private int mCurrentIndex = -1;
+    public int mCurrentIndex = -1;
 
 
 

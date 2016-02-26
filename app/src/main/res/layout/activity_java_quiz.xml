@@ -6,80 +6,83 @@
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/phone"
-    >
+    android:background="@drawable/phone">
 
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/question_text_view"
-      android:layout_centerHorizontal="true"
-      android:layout_alignParentTop="true"
-      android:textColor="#80CBC4"
-      android:background="#30000000"
-      android:padding="24dp"
-      android:textAlignment="center"
-      android:textSize="30dp"
-
-
-    />
-
-   <RelativeLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginBottom="50dp"
-       >
-
-   <Button
-
-       android:id="@+id/true_button"
-       android:layout_marginLeft="30dp"
-       android:layout_alignParentBottom="true"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/true_button"
-       />
-
-    <Button
-        android:id="@+id/false_button"
-        android:layout_marginRight="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/question_text_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/false_button"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#30000000"
+        android:padding="24dp"
+        android:textAlignment="center"
+        android:textColor="#80CBC4"
+        android:textSize="30dp"
+
+
         />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+
+        <Button
+
+            android:id="@+id/true_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:text="@string/true_button" />
+
+        <Button
+            android:id="@+id/false_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:text="@string/false_button" />
 
 
-   </RelativeLayout>
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_alignParentBottom="true"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
 
 
-       >
-       <Button android:id="@+id/previous_button"
-       android:layout_centerHorizontal="true"
-       android:layout_marginLeft="5dp"
-       android:layout_width="150dp"
-       android:layout_height="wrap_content"
-       android:text="@string/previous_button"
-       android:layout_alignParentLeft="true"
-       />
+        >
 
-       <Button
-           android:id="@+id/next_button"
-           android:layout_marginRight="5dp"
-           android:layout_width="150dp"
-           android:layout_centerHorizontal="true"
-           android:layout_height="wrap_content"
-           android:text="@string/next_button"
-           android:layout_alignParentRight="true"
-    />
+        <Button
+            android:id="@+id/previous_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:text="@string/previous_button" />
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="5dp"
+            android:text="@string/next_button" />
+
+        <Button
+            android:id="@+id/cheat_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="bottom"
+            android:text="@string/cheat_button" />
 
 
-
-</RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

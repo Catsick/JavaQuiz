@@ -22,7 +22,7 @@ public Question(int textResId, boolean answer) {
         mTextResId = textResId;
     }
 
-    public boolean isAnswer() {
+    public boolean isAnswerTrue() {
         return mAnswer;
     }
 

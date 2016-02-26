@@ -1,7 +1,7 @@
 package com.example.bonnie.javaquiz;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,11 +16,16 @@ public class JavaQuiz extends AppCompatActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private Button mPreviousButton;
+    private Button mCheatButton;
     private TextView mQuestionTextView;
-    private int QuestionBank;
     private static final String keyIndex = "index";
     private static final String TAG = "QuizActivity";
     QuestionBank QBank = new QuestionBank();
+    private int QuestionBank;
+    private int mCurrentIndex = 0;
+    private static final int REQUEST_CODE_CHEAT = 0;
+    private boolean mIsCheater;
+
 
 
     @Override
@@ -53,14 +58,25 @@ public class JavaQuiz extends AppCompatActivity {
         Log.d(TAG, "onPause()called");
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        if (requestCode == REQUEST_CODE_CHEAT) {
+            if (data == null){
+                return;
+            }
+            mIsCheater = CheatActivity.wasAnswerShown(data);
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate(Bundle)called");
         setContentView(R.layout.activity_java_quiz);
-
-
         Question currentQuestion;
         if (savedInstanceState != null && savedInstanceState.getInt(keyIndex) > 0) {
             currentQuestion = QBank.getQuestionAtIndex(savedInstanceState.getInt(keyIndex));
@@ -68,13 +84,11 @@ public class JavaQuiz extends AppCompatActivity {
             currentQuestion = QBank.getNextQuestion();
         }
 
-
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         mQuestionTextView.setText(currentQuestion.getTextResId());
         mFalseButton = (Button) findViewById(R.id.false_button);
         mTrueButton = (Button) findViewById(R.id.true_button);
         setUpQuestion(currentQuestion);
-
         mPreviousButton = (Button) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +105,16 @@ public class JavaQuiz extends AppCompatActivity {
                 setUpQuestion(QBank.getNextQuestion());
             }
         });
-
+        mCheatButton = (Button)findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                //boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+                boolean answerIsTrue = QBank.getQuestionAtIndex(QBank.getCurrentIndex()).isAnswerTrue();
+                Intent i = CheatActivity.newIntent(JavaQuiz.this, answerIsTrue);
+                startActivityForResult(i, REQUEST_CODE_CHEAT);
+            }
+        });
 
     }
 
@@ -112,7 +135,7 @@ public class JavaQuiz extends AppCompatActivity {
     private void setUpQuestion(Question currentQuestion) {
         mQuestionTextView.setText(currentQuestion.getTextResId());
 
-        if (currentQuestion.isAnswer()) {
+        if (currentQuestion.isAnswerTrue()) {
             mTrueButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
