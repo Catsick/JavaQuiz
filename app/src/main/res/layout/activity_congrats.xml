@@ -13,6 +13,7 @@
         android:id="@+id/results_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="#30000000"
@@ -20,8 +21,8 @@
         android:textAlignment="center"
         android:textColor="#80CBC4"
         android:textSize="30dp" />
-
 </RelativeLayout>
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

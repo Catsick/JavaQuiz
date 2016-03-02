@@ -83,12 +83,23 @@
             android:gravity="bottom"
             android:text="@string/cheat_button" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/results_button"
-            android:text="@string/results_button"/>
+
 
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/results_button"
+        android:text="@string/results_button"
+        android:layout_alignParentBottom="true"
+
+        />
+    </RelativeLayout>
+
 </RelativeLayout>
