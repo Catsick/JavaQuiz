@@ -97,7 +97,8 @@
            android:id="@+id/cheat_button"
            android:gravity="bottom"
            android:layout_centerHorizontal="true"
-           android:text="@string/cheat_button"/>
+           android:text="@string/cheat_button"
+           android:textAlignment="center"/>
 
 
 
