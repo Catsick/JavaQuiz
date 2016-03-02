@@ -98,6 +98,11 @@
            android:gravity="bottom"
            android:layout_centerHorizontal="true"
            android:text="@string/cheat_button"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/results_button"
+           android:text="@string/results_button"/>
 
     />
 

@@ -17,6 +17,7 @@ public class JavaQuiz extends AppCompatActivity {
     private Button mNextButton;
     private Button mPreviousButton;
     private Button mCheatButton;
+    private Button mResultsButton;
     private TextView mQuestionTextView;
     private static final String keyIndex = "index";
     private static final String TAG = "QuizActivity";
@@ -25,6 +26,7 @@ public class JavaQuiz extends AppCompatActivity {
     private int mCurrentIndex = 0;
     private static final int REQUEST_CODE_CHEAT = 0;
     private boolean mIsCheater;
+
 
 
     @Override
@@ -109,20 +111,40 @@ public class JavaQuiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+                //checkIsComplete();
                 boolean answerIsTrue = QBank.getQuestionAtIndex(QBank.getCurrentIndex()).isAnswerTrue();
                 Intent i = CheatActivity.newIntent(JavaQuiz.this, answerIsTrue);
                 startActivityForResult(i, REQUEST_CODE_CHEAT);
             }
         });
-
-    }
-
-    public void checkIsComplete() {
-        if (QBank.checkIfComplete()) {
-            Intent congratsIntent = new Intent(JavaQuiz.this, Congrats.class);
-            JavaQuiz.this.startActivity(congratsIntent);
+        mResultsButton = (Button) findViewById(R.id.results_button);
+        mResultsButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                int mResults = QBank.correctQues();
+                Intent congratsIntent = new Intent(JavaQuiz.this, Congrats.class);
+                String correctAnswers = Integer.toString(mResults);
+                congratsIntent.putExtra("correctAnswers", correctAnswers);
+                JavaQuiz.this.startActivity(congratsIntent);
+//            Intent congratsIntent = new Intent(JavaQuiz.this, Congrats.class);
+//            JavaQuiz.this.startActivity(congratsIntent);
         }
+        });
     }
+
+
+
+    public void setQuestionBank(int questionBank) {
+        QuestionBank = questionBank;
+    }
+
+//    public void checkIsComplete() {
+//        if (QBank.checkIfComplete()) {
+//            Intent congratsIntent = new Intent(JavaQuiz.this, Congrats.class);
+//            JavaQuiz.this.startActivity(congratsIntent);
+//        }
+//    }
 
     private void checkAnswer(boolean answeredCorrect) {
         int messageResId = 0;
@@ -137,7 +159,7 @@ public class JavaQuiz extends AppCompatActivity {
                 messageResId = R.string.incorrect_toast;
             }
         }
-        checkIsComplete();
+
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
 

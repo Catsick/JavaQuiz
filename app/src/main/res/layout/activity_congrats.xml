@@ -6,7 +6,22 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.bonnie.javaquiz.Congrats">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/results_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#30000000"
+        android:padding="24dp"
+        android:textAlignment="center"
+        android:textColor="#80CBC4"
+        android:textSize="30dp" />
 
+</RelativeLayout>
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,12 +38,5 @@
 
     <include layout="@layout/content_congrats" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -54,12 +54,13 @@ public class QuestionBank {
         return mQuestionList.get(index);
     }
 
-    protected boolean checkIfComplete() {
+    protected int correctQues() {
+        int mResults=0;
         for (Question item : mQuestionList){
-            if (item.wasAnsweredCorrect == false){
-                return false;
+            if (item.wasAnsweredCorrect){
+              mResults ++;
             }
         }
-        return true;
+        return mResults;
     }
 }
